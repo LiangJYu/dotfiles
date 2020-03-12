@@ -1,0 +1,5 @@
+# disable sound bell
+set -g bell-action none
+
+# disable visual bell
+set -g visual-bell off

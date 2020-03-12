@@ -1,0 +1,38 @@
+# set paths
+export PYRE_JOURNAL_DIR=${HOME}/tools/pyre/include/pyre
+export PYREDIR=${HOME}/tools/pyre
+export PATH=$PYREDIR/bin:${HOME}/python/miniconda3/bin:$PATH:${HOME}/tools/isce/bin
+export PYTHONPATH=$PYREDIR/packages:$PYTHONPATH:${HOME}/tools/isce/packages
+#export LD_LIBRARY_PATH=$PYREDIR/lib:${HOME}/python/miniconda3/lib:$LD_LIBRARY_PATH:${HOME}/tools/isce/lib
+# below is using user created ISCE3 env
+export LD_LIBRARY_PATH=$PYREDIR/lib:${HOME}/miniconda3/envs/ISCE3/lib:$LD_LIBRARY_PATH:${HOME}/tools/isce/lib
+
+# for CUDA
+export CUDACXX=/usr/local/cuda/bin/nvcc
+
+# for CUDA debugging 
+export CUDA_DEBUGGER_SOFTWARE_PREEMPTION=1
+
+# https://stackoverflow.com/questions/50555973/qgtkstyle-could-not-resolve-gtk
+export QT_STYLE_OVERRIDE=gtk2
+
+# set conda environment
+conda activate ISCE3
+
+# ensure CONDA and not root GDAL is used
+export GDAL_ROOT=$CONDA_PREFIX
+
+# use newer compiler
+export CXX=/home/briel/apps/gcc7/bin/c++
+export CC=gcc
+
+# alias for CMake ISCE
+#alias isce_cmake='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce -DPYTHON_EXECUTABLE:FILENAME=python3.7m ${HOME}/src/isce'
+#alias isce_cmake_dbg='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce -DPYTHON_EXECUTABLE:FILENAME=python3.7m ${HOME}/src/isce -DCMAKE_BUILD_TYPE=Debug'
+#alias isce_gpu_cmake='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce -DPYTHON_EXECUTABLE:FILENAME=python3.7m -DWITH_CUDA=ON ${HOME}/src/isce'
+#alias isce_gpu_cmake_dbg='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce -DPYTHON_EXECUTABLE:FILENAME=python3.7m -DWITH_CUDA=ON ${HOME}/src/isce -DCMAKE_BUILD_TYPE=Debug'
+alias isce_cmake='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce ${HOME}/src/isce'
+alias isce_cmake_dbg='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce ${HOME}/src/isce -DCMAKE_BUILD_TYPE=Debug'
+alias isce_gpu_cmake='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce -DWITH_CUDA=ON ${HOME}/src/isce'
+alias isce_gpu_cmake_dbg='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce -DWITH_CUDA=ON ${HOME}/src/isce -DCMAKE_BUILD_TYPE=Debug'
+
