@@ -1,14 +1,11 @@
 # set paths
-#export PYRE_JOURNAL_DIR=${HOME}/tools/pyre/include/pyre
-#export PYREDIR=${HOME}/tools/pyre
-export PATH=${HOME}/python/miniconda3/bin:$PATH:${HOME}/tools/isce/bin
-export PYTHONPATH=$PYTHONPATH:${HOME}/tools/isce/packages
-#export LD_LIBRARY_PATH=$PYREDIR/lib:${HOME}/python/miniconda3/lib:$LD_LIBRARY_PATH:${HOME}/tools/isce/lib
-# below is using user created ISCE3 env
-export LD_LIBRARY_PATH=${HOME}/miniconda3/envs/ISCE3/lib:$LD_LIBRARY_PATH:${HOME}/tools/isce/lib
+export PATH=${HOME}/miniconda3/bin:$PATH:${HOME}/tools/isce/install/bin
+export PYTHONPATH=$PYTHONPATH:${HOME}/tools/isce/install/packages
+export LD_LIBRARY_PATH=${HOME}/miniconda3/envs/ISCE3/lib:$LD_LIBRARY_PATH:${HOME}/tools/isce/install/lib
 
 # for CUDA
 export CUDACXX=/usr/local/cuda/bin/nvcc
+export CUDAHOSTCXX=/usr/bin/g++-6
 
 # for CUDA debugging 
 export CUDA_DEBUGGER_SOFTWARE_PREEMPTION=1
@@ -23,16 +20,12 @@ conda activate ISCE3
 export GDAL_ROOT=$CONDA_PREFIX
 
 # use newer compiler
-export CXX=c++
-export CC=gcc
+export CXX=g++-6
+export CC=gcc-6
 
 # alias for CMake ISCE
-#alias isce_cmake='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce -DPYTHON_EXECUTABLE:FILENAME=python3.7m ${HOME}/src/isce'
-#alias isce_cmake_dbg='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce -DPYTHON_EXECUTABLE:FILENAME=python3.7m ${HOME}/src/isce -DCMAKE_BUILD_TYPE=Debug'
-#alias isce_gpu_cmake='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce -DPYTHON_EXECUTABLE:FILENAME=python3.7m -DWITH_CUDA=ON ${HOME}/src/isce'
-#alias isce_gpu_cmake_dbg='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce -DPYTHON_EXECUTABLE:FILENAME=python3.7m -DWITH_CUDA=ON ${HOME}/src/isce -DCMAKE_BUILD_TYPE=Debug'
-alias isce_cmake='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce ${HOME}/src/isce'
-alias isce_cmake_dbg='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce ${HOME}/src/isce -DCMAKE_BUILD_TYPE=Debug'
-alias isce_gpu_cmake='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce -DWITH_CUDA=ON ${HOME}/src/isce'
-alias isce_gpu_cmake_dbg='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce -DWITH_CUDA=ON ${HOME}/src/isce -DCMAKE_BUILD_TYPE=Debug'
+alias isce_cmake='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce/install ${HOME}/src/isce'
+alias isce_cmake_dbg='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce/install ${HOME}/src/isce -DCMAKE_BUILD_TYPE=Debug'
+alias isce_gpu_cmake='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce/install -DWITH_CUDA=ON ${HOME}/src/isce'
+alias isce_gpu_cmake_dbg='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce/install -DWITH_CUDA=ON ${HOME}/src/isce -DCMAKE_BUILD_TYPE=Debug'
 
