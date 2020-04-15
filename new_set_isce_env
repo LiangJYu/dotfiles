@@ -20,8 +20,8 @@ conda activate ISCE3
 export GDAL_ROOT=$CONDA_PREFIX
 
 # use newer compiler
-export CXX=g++-6
-export CC=gcc-6
+export CXX=g++-8
+export CC=gcc-8
 
 # alias for CMake ISCE
 alias isce_cmake='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce/install ${HOME}/src/isce'
