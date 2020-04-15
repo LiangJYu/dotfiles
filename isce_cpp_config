@@ -1,0 +1,10 @@
+-Icxx
+-I/home/lyu/tools/isce/build/extern/pyre/lib
+-Iextern/pybind11/include
+-I/home/lyu/miniconda3/envs/ISCE3/include/python3.7m
+-I/home/lyu/miniconda3/envs/ISCE3/include
+-I/home/lyu/src/isce/extern/eigen3
+-I/usr/local/cuda-10.2/targets/x86_64-linux/include
+-I/home/lyu/miniconda3/envs/ISCE3/include
+-I/home/lyu/src/isce_lyu/extern/googletest/googletest/include
+-I./extern/cereal/include/cereal/types/memory.hpp
