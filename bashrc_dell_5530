@@ -118,6 +118,13 @@ if ! shopt -oq posix; then
 fi
 export PATH=/usr/local/cuda-10.2/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda-10.2/lib64:$LD_LIBRARY_PATH
-. /home/lyu/miniconda3/etc/profile.d/conda.sh
 
-# export DISPLAY=localhost:0.0
+# load conda if present
+if [ -f ~/miniconda3/etc/profile.d/conda.sh ]; then
+  . /home/lyu/miniconda3/etc/profile.d/conda.sh
+fi
+
+# prepare for X11 server
+if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
+  export DISPLAY=localhost:0.0
+fi
