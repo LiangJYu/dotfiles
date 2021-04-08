@@ -41,7 +41,7 @@ set background=dark
 " differently from regular Vi. They are highly recommended though.
 set showcmd		" Show (partial) command in status line.
 set showmatch		" Show matching brackets.
-"set ignorecase		" Do case insensitive matching
+set ignorecase		" Do case insensitive matching
 "set smartcase		" Do smart case matching
 set incsearch		" Incremental search
 "set autowrite		" Automatically save before commands like :next and :make
@@ -92,10 +92,91 @@ endif
 
 set vb t_vb=        " no visual bell & flash
 
+" Apply C++ syntax highligting to icc files
 autocmd BufNewFile,BufRead *.icc set syntax=cpp
+
+" Strip trailing whitespace on save
+autocmd BufWritePre * :%s/\s\+$//e
+
+" set up tab labels with tab number, buffer name, number of windows
+if exists("+showtabline")
+  function! MyTabLine()
+    let s = ''
+    let wn = ''
+    let t = tabpagenr()
+    let i = 1
+    while i <= tabpagenr('$')
+      let buflist = tabpagebuflist(i)
+      let winnr = tabpagewinnr(i)
+      let s .= '%' . i . 'T'
+      let s .= (i == t ? '%1*' : '%2*')
+      let s .= ' '
+      let wn = tabpagewinnr(i,'$')
+
+      let s .= (i== t ? '%#TabNumSel#' : '%#TabNum#')
+      let s .= i
+      if tabpagewinnr(i,'$') > 1
+        let s .= '.'
+        let s .= (i== t ? '%#TabWinNumSel#' : '%#TabWinNum#')
+        let s .= (tabpagewinnr(i,'$') > 1 ? wn : '')
+      end
+
+      let s .= ' %*'
+      let s .= (i == t ? '%#TabLineSel#' : '%#TabLine#')
+      let bufnr = buflist[winnr - 1]
+      let file = bufname(bufnr)
+      let buftype = getbufvar(bufnr, 'buftype')
+      if buftype == 'nofile'
+        if file =~ '\/.'
+          let file = substitute(file, '.*\/\ze.', '', '')
+        endif
+      else
+        let file = fnamemodify(file, ':p:t')
+      endif
+      if file == ''
+        let file = '[No Name]'
+      endif
+      let s .= file
+
+      " mod check
+      let m = 0
+      for b in tabpagebuflist(i)
+        if getbufvar( b, "&modified" )
+          let m += 1
+        endif
+      endfor
+      if m > 0
+        let s .= '[' . m . '+]'
+      endif
+
+      let s .= (i == t ? '%m' : '')
+      let i = i + 1
+    endwhile
+    let s .= '%T%#TabLineFill#%='
+    return s
+  endfunction
+  set stal=2
+  set tabline=%!MyTabLine()
+endif
 
 set statusline+=%#warningmsg#
 set statusline+=%*
+
+
+" vimplug
+call plug#begin()
+Plug 'tpope/vim-fugitive'
+Plug 'valloric/youcompleteme'
+Plug 'yggdroot/indentline'
+Plug 'sheerun/vim-polyglot'
+Plug 'scrooloose/syntastic'
+Plug 'yegappan/grep'
+Plug 'airblade/vim-gitgutter'
+call plug#end()
+
+" you complete me
+let g:ycm_clangd_binary_path = "/use/bin/clangd"
+
 
 " syntastic options
 if get(g:, 'loaded_syntastic_plugin', 0)
