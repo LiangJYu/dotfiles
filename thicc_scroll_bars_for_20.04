@@ -1,0 +1,13 @@
+/*
+ * https://askubuntu.com/a/908584
+ * save me as ~/.config/gtk-3.0/gtk.css
+ */
+scrollbar slider {
+    /* Size of the slider */
+    min-width: 15px;
+    min-height: 10px;
+    border-radius: 12px;
+
+    /* Padding around the slider */
+    border: 5px solid transparent;
+}
