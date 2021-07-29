@@ -1,31 +1,33 @@
+ISCE_DIR=isce3_$1
+ISCE_ENV=ISCE3_$1
+ISCE_SRC=${HOME}/src/${ISCE_DIR}
+ISCE_INSTALL=${HOME}/tools/$ISCE_DIR/install
+
+# colorful ctest for gtest
+export GTEST_COLOR=1
+
 # set paths
-export PATH=${HOME}/miniconda3/bin:$PATH:${HOME}/tools/isce/install/bin
-export PYTHONPATH=$PYTHONPATH:${HOME}/tools/isce/install/packages
-export LD_LIBRARY_PATH=${HOME}/miniconda3/envs/ISCE3/lib:$LD_LIBRARY_PATH:${HOME}/tools/isce/install/lib
+export PATH=${HOME}/miniconda3/bin:$PATH:${ISCE_INSTALL}/bin
+export PYTHONPATH=$PYTHONPATH:${ISCE_INSTALL}/packages
+export LD_LIBRARY_PATH=${HOME}/miniconda3/envs/$ISCE_ENV/lib:$LD_LIBRARY_PATH:${ISCE_INSTALL}/lib
 
 # for CUDA
-export CUDACXX=/usr/local/cuda/bin/nvcc
-export CUDAHOSTCXX=/usr/bin/g++-6
+export CUDACXX=/usr/local/cuda-11.0/bin/nvcc
 
-# for CUDA debugging 
+# for CUDA debugging
 export CUDA_DEBUGGER_SOFTWARE_PREEMPTION=1
 
 # https://stackoverflow.com/questions/50555973/qgtkstyle-could-not-resolve-gtk
 export QT_STYLE_OVERRIDE=gtk2
 
 # set conda environment
-conda activate ISCE3
+conda activate ISCE3_$1
 
 # ensure CONDA and not root GDAL is used
 export GDAL_ROOT=$CONDA_PREFIX
 
-# use newer compiler
-export CXX=g++-8
-export CC=gcc-8
-
 # alias for CMake ISCE
-alias isce_cmake='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce/install ${HOME}/src/isce'
-alias isce_cmake_dbg='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce/install ${HOME}/src/isce -DCMAKE_BUILD_TYPE=Debug'
-alias isce_gpu_cmake='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce/install -DWITH_CUDA=ON ${HOME}/src/isce'
-alias isce_gpu_cmake_dbg='cmake -DCMAKE_INSTALL_PREFIX=${HOME}/tools/isce/install -DWITH_CUDA=ON ${HOME}/src/isce -DCMAKE_BUILD_TYPE=Debug'
-
+alias isce_cmake='cmake -DCMAKE_INSTALL_PREFIX=${ISCE_INSTALL} ${ISCE_SRC}'
+alias isce_cmake_dbg='cmake -DCMAKE_INSTALL_PREFIX=${ISCE_INSTALL} ${ISCE_SRC} -DCMAKE_BUILD_TYPE=Debug'
+alias isce_gpu_cmake='cmake -DCMAKE_INSTALL_PREFIX=${ISCE_INSTALL} -DWITH_CUDA=ON ${ISCE_SRC}'
+alias isce_gpu_cmake_dbg='cmake -DCMAKE_INSTALL_PREFIX=${ISCE_INSTALL} -DWITH_CUDA=ON ${ISCE_SRC} -DCMAKE_BUILD_TYPE=Debug'
