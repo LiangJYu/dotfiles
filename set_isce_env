@@ -1,7 +1,7 @@
 ISCE_DIR=isce3_$1
 ISCE_ENV=ISCE3_$1
 ISCE_SRC=${HOME}/src/${ISCE_DIR}
-ISCE_INSTALL=${HOME}/tools/$ISCE_DIR/install
+ISCE_INSTALL=${ISCE_SRC}/build/install
 
 # colorful ctest for gtest
 export GTEST_COLOR=1
@@ -12,7 +12,7 @@ export PYTHONPATH=$PYTHONPATH:${ISCE_INSTALL}/packages
 export LD_LIBRARY_PATH=${HOME}/miniconda3/envs/$ISCE_ENV/lib:$LD_LIBRARY_PATH:${ISCE_INSTALL}/lib
 
 # for CUDA
-export CUDACXX=/usr/local/cuda-11.0/bin/nvcc
+export CUDACXX=nvcc
 
 # for CUDA debugging
 export CUDA_DEBUGGER_SOFTWARE_PREEMPTION=1
