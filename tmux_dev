@@ -1,0 +1,22 @@
+#!/bin/sh
+tmux new-session \; \
+    send-keys 'cd src/isce3_0' C-m \; \
+    split-window -h -p 25 \; \
+    send-keys 'source set_isce_env 0' C-m \; \
+    send-keys 'cd src/isce3_0/build' C-m \; \
+    split-window -v -p 50 \; \
+    send-keys 'source set_isce_env 0' C-m \; \
+    new-window \; \
+    send-keys 'cd src/isce3_1' C-m \; \
+    split-window -h -p 25 \; \
+    send-keys 'source set_isce_env 1' C-m \; \
+    send-keys 'cd src/isce3_1/build' C-m \; \
+    split-window -v -p 50 \; \
+    send-keys 'source set_isce_env 1' C-m \; \
+    new-window \; \
+    send-keys 'cd src/isce3_2' C-m \; \
+    split-window -h -p 25 \; \
+    send-keys 'source set_isce_env 2' C-m \; \
+    send-keys 'cd src/isce3_2/build' C-m \; \
+    split-window -v -p 50 \; \
+    send-keys 'source set_isce_env 2' C-m \; \
