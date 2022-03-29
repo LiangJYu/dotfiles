@@ -119,11 +119,13 @@ export PATH=/usr/local/cuda/bin:$PATH
 export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 # load conda if present
-if [ -f ~/python/miniconda3/etc/profile.d/conda.sh ]; then
-  . /home/lyu/python/miniconda3/etc/profile.d/conda.sh
+if [ -f ~/miniconda3/etc/profile.d/conda.sh ]; then
+  . /home/lyu/miniconda3/etc/profile.d/conda.sh
 fi
 
-# prepare for X11 server
-if grep -qEi "(Microsoft|WSL)" /proc/version &> /dev/null ; then
-  export DISPLAY=localhost:0.0
+# prepare for X11 server via VcXsrv
+# https://stackoverflow.com/a/61110604
+if grep -qEi "(WSL2)" /proc/version &> /dev/null ; then
+  export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
+  export LIBGL_ALWAYS_INDIRECT=1
 fi
