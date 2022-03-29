@@ -98,6 +98,13 @@ autocmd BufNewFile,BufRead *.icc set syntax=cpp
 " Strip trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
+" Highlight column 80 of active window
+augroup BgHighlight
+    autocmd!
+    autocmd WinEnter * set colorcolumn=80
+    autocmd WinLeave * set colorcolumn=0
+augroup END
+
 " set up tab labels with tab number, buffer name, number of windows
 if exists("+showtabline")
   function! MyTabLine()
