@@ -5,5 +5,3 @@ if [ ! -f $HOME/.bashrc.orig ]; then
     mv $HOME/.bashrc $HOME/.bashrc.orig
 fi
 ln -s $HOME/src/dotfiles/bashrc_dell_5530 $HOME/.bashrc
-ln -s $HOME/src/dotfiles/connect_jpl_vpn_full $HOME
-ln -s $HOME/src/dotfiles/kill_jpl_vpn $HOME
