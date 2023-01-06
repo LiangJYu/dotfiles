@@ -95,6 +95,9 @@ set vb t_vb=        " no visual bell & flash
 " Apply C++ syntax highligting to icc files
 autocmd BufNewFile,BufRead *.icc set syntax=cpp
 
+" Expose all MarkDown syntax
+autocmd BufNewFile,BufRead *.md set cole=0
+
 " Strip trailing whitespace on save
 autocmd BufWritePre * :%s/\s\+$//e
 
