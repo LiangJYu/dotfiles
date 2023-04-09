@@ -9,6 +9,7 @@ dependencies:
   - fftw>=3.3
   - gdal>=3.0
   - gmock>=1.10
+  - gsl
   - gtest>=1.10
   - gxx_linux-64>=9,<10
   - h5py
