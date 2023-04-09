@@ -1,4 +1,4 @@
-name: isce3
+name: opera
 channels:
   - conda-forge
   - nodefaults
@@ -22,9 +22,14 @@ dependencies:
   - ninja
   - numpy
   - packaging
+  - pandas
   - pybind11>=2.5
+  - pyproj
+  - pygrib
+  - pysolid
   - pytest
   - python>=3.7
+  - raider-base
   - requests
   - ruamel.yaml
   - scipy
