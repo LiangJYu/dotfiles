@@ -20,6 +20,7 @@ dependencies:
   - matplotlib
   - ninja
   - numpy
+  - pyaps3
   - pybind11>=2.5
   - pyproj
   - pygrib

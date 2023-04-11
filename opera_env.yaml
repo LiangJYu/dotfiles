@@ -23,6 +23,7 @@ dependencies:
   - numpy
   - packaging
   - pandas
+  - pyaps3
   - pybind11>=2.5
   - pyproj
   - pygrib
