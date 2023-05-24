@@ -1,5 +1,5 @@
-ISCE_DIR=isce3_$1
-ISCE_ENV=isce3_$1
+ISCE_DIR=opera_isce3
+ISCE_ENV=opera
 ISCE_SRC=${HOME}/src/${ISCE_DIR}
 ISCE_INSTALL=${ISCE_SRC}/build/install
 
@@ -12,7 +12,7 @@ export PATH=${HOME}/miniconda3/bin:$PATH:${ISCE_INSTALL}/bin
 export PYTHONPATH=$PYTHONPATH:${ISCE_INSTALL}/packages
 export LD_LIBRARY_PATH=${HOME}/miniconda3/envs/$ISCE_ENV/lib:$LD_LIBRARY_PATH:${ISCE_INSTALL}/lib
 
-# set conda environment
+# set conda environment to enable $CXX and $CC
 conda activate $ISCE_ENV
 
 # for CUDA
