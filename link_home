@@ -1,7 +1,8 @@
 ln -s $HOME/src/dotfiles/tmux.conf $HOME/.tmux.conf
 ln -s $HOME/src/dotfiles/tmuxrc $HOME/.tmuxrc
 ln -s $HOME/src/dotfiles/inputrc $HOME/.inputrc
+ln -s $HOME/src/dotfiles/vimrc $HOME/.vimrc
 if [ ! -f $HOME/.bashrc.orig ]; then
     mv $HOME/.bashrc $HOME/.bashrc.orig
 fi
-ln -s $HOME/src/dotfiles/bashrc_dell_5530 $HOME/.bashrc
+ln -s $HOME/src/dotfiles/bashrc $HOME/.bashrc
