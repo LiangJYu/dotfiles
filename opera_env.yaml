@@ -31,8 +31,9 @@ dependencies:
   - pygrib
   - pysolid
   - pytest
+  - pytest-order
   - python>=3.7
-  - raider-base
+    #- raider-base
   - requests
   - ruamel.yaml
   - scipy

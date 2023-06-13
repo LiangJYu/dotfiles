@@ -26,7 +26,7 @@ dependencies:
   - pygrib
   - pytest
   - python>=3.7
-  - raider-base
+    #- raider-base
   - ruamel.yaml
   - scipy
   - shapely
