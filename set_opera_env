@@ -29,10 +29,11 @@ export QT_STYLE_OVERRIDE=gtk2
 export GDAL_ROOT=$CONDA_PREFIX
 
 # alias for CMake ISCE build install with: ninja install -jN
-alias isce_cmake='cmake -DCMAKE_INSTALL_PREFIX=${ISCE_INSTALL} ${ISCE_SRC} -DWITH_CUDA=OFF -G Ninja'
-alias isce_cmake_dbg='cmake -DCMAKE_INSTALL_PREFIX=${ISCE_INSTALL} ${ISCE_SRC} -DWITH_CUDA=OFF -DCMAKE_BUILD_TYPE=Debug -G Ninja'
-alias isce_gpu_cmake='cmake -DCMAKE_INSTALL_PREFIX=${ISCE_INSTALL} -DWITH_CUDA=ON ${ISCE_SRC} -G Ninja'
-alias isce_gpu_cmake_dbg='cmake -DCMAKE_INSTALL_PREFIX=${ISCE_INSTALL} -DWITH_CUDA=ON ${ISCE_SRC} -DCMAKE_BUILD_TYPE=Debug -G Ninja'
+CMAKE_COMMON="cmake -DCMAKE_INSTALL_PREFIX=${ISCE_INSTALL} ${ISCE_SRC} -G Ninja -DCMAKE_CXX_FLAGS=-fdiagnostics-color=always"
+alias isce_cmake='${CMAKE_COMMON} -DWITH_CUDA=OFF'
+alias isce_cmake_dbg='${CMAKE_COMMON} -DWITH_CUDA=OFF -DCMAKE_BUILD_TYPE=Debug'
+alias isce_gpu_cmake='${CMAKE_COMMON} -DWITH_CUDA=ON'
+alias isce_gpu_cmake_dbg='${CMAKE_COMMON} -DWITH_CUDA=ON -DCMAKE_BUILD_TYPE=Debug'
 
 # alias for smart build dir clean up
 alias clean_build="rm -rf bin CMake* cmake* CPack* cxx doc extern isce3* lib Makefile packages python share tests CTtest*"
