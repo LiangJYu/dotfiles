@@ -24,6 +24,7 @@ dependencies:
   - pybind11>=2.5
   - pyproj
   - pygrib
+  - pysolid
   - pytest
   - python>=3.7
     #- raider-base

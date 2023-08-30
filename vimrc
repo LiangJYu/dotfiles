@@ -24,6 +24,7 @@ endif
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
 set background=dark
+colorscheme delek
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -188,6 +189,7 @@ Plug 'sheerun/vim-polyglot'
 Plug 'scrooloose/syntastic'
 Plug 'yegappan/grep'
 Plug 'airblade/vim-gitgutter'
+Plug 'junegunn/fzf'
 call plug#end()
 
 " you complete me
