@@ -24,7 +24,7 @@ endif
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
 set background=dark
-colorscheme delek
+colorscheme Monokai
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -190,10 +190,13 @@ Plug 'scrooloose/syntastic'
 Plug 'yegappan/grep'
 Plug 'airblade/vim-gitgutter'
 Plug 'junegunn/fzf'
+Plug 'flazz/vim-colorschemes'
+Plug 'scrooloose/nerdtree'
+Plug 'dense-analysis/ale'
 call plug#end()
 
 " you complete me
-let g:ycm_clangd_binary_path = "/use/bin/clangd"
+let g:ycm_clangd_binary_path = "/usr/bin/clangd-12"
 
 
 " syntastic options
