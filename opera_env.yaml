@@ -25,10 +25,8 @@ dependencies:
   - pandas
   - pyaps3
   - pybind11>=2.5
-  - pyproj
-  - pyaps3
-  - pybind11>=2.5
   - pygrib
+  - pyproj
   - pysolid
   - pytest
   - pytest-order
