@@ -133,12 +133,9 @@ export LD_LIBRARY_PATH=/usr/local/cuda/lib64:$LD_LIBRARY_PATH
 
 # load conda if present
 if [ -f ~/miniconda3/etc/profile.d/conda.sh ]; then
-  . /home/lyu/miniconda3/etc/profile.d/conda.sh
+ . /home/lyu/miniconda3/etc/profile.d/conda.sh  # commented out by conda initialize
 fi
-
-# prepare for X11 server via VcXsrv
-# https://stackoverflow.com/a/61110604
-if grep -qEi "(WSL2)" /proc/version &> /dev/null ; then
-  export DISPLAY=$(awk '/nameserver / {print $2; exit}' /etc/resolv.conf 2>/dev/null):0
-  export LIBGL_ALWAYS_INDIRECT=1
+# load mamba if present
+if [ -f "/home/lyu/miniconda3/etc/profile.d/mamba.sh" ]; then
+    . "/home/lyu/miniconda3/etc/profile.d/mamba.sh"
 fi
