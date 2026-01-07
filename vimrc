@@ -24,7 +24,6 @@ endif
 " If using a dark background within the editing area and syntax highlighting
 " turn on this option as well
 set background=dark
-colorscheme badwolf
 
 " Uncomment the following to have Vim jump to the last position when
 " reopening a file
@@ -198,6 +197,7 @@ call plug#end()
 " you complete me
 let g:ycm_clangd_binary_path = "/usr/bin/clangd-12"
 
+colorscheme badwolf
 
 " syntastic options
 if get(g:, 'loaded_syntastic_plugin', 0)
